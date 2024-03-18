@@ -17,7 +17,7 @@ class OrderableOptions
     /**
      * @var (Closure(\Illuminate\Database\Eloquent\Model): void)|null
      */
-    protected Closure | null $setOrderUsing = null;
+    protected ?Closure $setOrderUsing = null;
 
     public static function default(): static
     {
@@ -53,7 +53,7 @@ class OrderableOptions
     }
 
     /**
-     * @param Closure(\Illuminate\Database\Eloquent\Model): void $reorderUsing
+     * @param  Closure(\Illuminate\Database\Eloquent\Model): void  $reorderUsing
      */
     public function setOrderUsing(Closure $reorderUsing): static
     {
