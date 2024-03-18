@@ -2,9 +2,9 @@
 
 namespace C6Digital\Orderable\Tests;
 
+use C6Digital\Orderable\OrderableServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use C6Digital\Orderable\OrderableServiceProvider;
 
 class TestCase extends Orchestra
 {
