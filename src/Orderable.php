@@ -17,6 +17,7 @@ trait Orderable
 
             if ($callback = $options->getSetOrderUsing()) {
                 $callback($model);
+
                 return;
             }
 
@@ -59,7 +60,7 @@ trait Orderable
         $this->scopeOrdered($query, 'desc');
     }
 
-    public function reorder(int|null $exclude = null): void
+    public function reorder(?int $exclude = null): void
     {
         $options = static::getOrderableOptions();
         $column = $options->getColumn();
