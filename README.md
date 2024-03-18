@@ -39,6 +39,17 @@ class Post extends Model
 }
 ```
 
+> The default column is `order`, so make sure you add that to your database table. The package doesn't do it for you automatically.
+
+Use the `ordered()`, `orderedAsc()` and `orderedDesc()` methods to order results in a query.
+
+```php
+Post::query()
+    ->ordered()     // Defaults to `ASC`.
+    ->orderedAsc()  // Orders `ASC`.
+    ->orderedDesc() // Orders `DESC`.
+```
+
 ## Testing
 
 ```bash

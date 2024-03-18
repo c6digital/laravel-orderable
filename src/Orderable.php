@@ -15,15 +15,18 @@ trait Orderable
         static::creating(function (Model $model) {
             $options = static::getOrderableOptions();
 
+            if ($callback = $options->getSetOrderUsing()) {
+                $callback($model);
+                return;
+            }
+
             if (! $options->shouldReorderOnCreate()) {
                 return;
             }
 
             $column = $options->getColumn();
 
-            if ($options->getSetOrderUsing()) {
-                $options->getSetOrderUsing()($model);
-            } elseif ($options->shouldMoveToEndOnCreate()) {
+            if ($options->shouldMoveToEndOnCreate()) {
                 $model->{$column} = static::max($column) + 1;
             } elseif ($options->shouldMoveToStartOnCreate()) {
                 $model->{$column} = 1;
@@ -56,12 +59,14 @@ trait Orderable
         $this->scopeOrdered($query, 'desc');
     }
 
-    public function reorder(int $excludeId): void
+    public function reorder(int|null $exclude = null): void
     {
         $options = static::getOrderableOptions();
         $column = $options->getColumn();
 
-        static::query()->whereKeyNot($excludeId)->increment($column);
+        static::query()
+            ->when($exclude, fn ($query) => $query->whereKeyNot($exclude))
+            ->increment($column);
     }
 
     public static function getOrderableOptions(): OrderableOptions

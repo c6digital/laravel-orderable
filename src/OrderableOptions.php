@@ -47,6 +47,7 @@ class OrderableOptions
 
     public function moveToStartOnCreate(bool $moveToStartOnCreate = true): static
     {
+        $this->moveToEndOnCreate = false;
         $this->moveToStartOnCreate = $moveToStartOnCreate;
 
         return $this;
