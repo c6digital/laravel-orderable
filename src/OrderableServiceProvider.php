@@ -2,7 +2,6 @@
 
 namespace C6Digital\Orderable;
 
-use C6Digital\Orderable\Commands\OrderableCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
