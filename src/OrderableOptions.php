@@ -21,7 +21,7 @@ class OrderableOptions
 
     public static function default(): static
     {
-        return new static();
+        return new static;
     }
 
     public function column(string $column): static
