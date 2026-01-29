@@ -4,6 +4,9 @@ namespace C6Digital\Orderable;
 
 use Closure;
 
+/**
+ * @phpstan-consistent-constructor
+ */
 class OrderableOptions
 {
     protected string $column = 'order';
