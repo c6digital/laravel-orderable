@@ -4,6 +4,9 @@ namespace C6Digital\Orderable;
 
 use Closure;
 
+/**
+ * @phpstan-consistent-constructor
+ */
 class OrderableOptions
 {
     protected string $column = 'order';
@@ -21,7 +24,7 @@ class OrderableOptions
 
     public static function default(): static
     {
-        return new static();
+        return new static;
     }
 
     public function column(string $column): static
